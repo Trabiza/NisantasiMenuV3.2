@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImagesCell" id="gTV-IL-0wX" customClass="ImagesCell" customModule="NisantasiMenu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="866" height="361"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="866" height="361"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iho-W1-vdE">
+                        <rect key="frame" x="0.0" y="0.0" width="866" height="361"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="iho-W1-vdE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2Ne-SY-hcc"/>
+                <constraint firstAttribute="bottom" secondItem="iho-W1-vdE" secondAttribute="bottom" id="WGG-cM-7Yb"/>
+                <constraint firstItem="iho-W1-vdE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ymz-oY-ecm"/>
+                <constraint firstAttribute="trailing" secondItem="iho-W1-vdE" secondAttribute="trailing" id="hCw-xZ-0KR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="866" height="361"/>
+            <connections>
+                <outlet property="imageView" destination="iho-W1-vdE" id="30T-aA-sR7"/>
+            </connections>
+            <point key="canvasLocation" x="566.39999999999998" y="-38.23088455772114"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="mlogo.png" width="428" height="220"/>
+    </resources>
+</document>

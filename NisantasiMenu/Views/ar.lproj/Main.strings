@@ -1,0 +1,122 @@
+
+/* Class = "UIButton"; normalTitle = "Language"; ObjectID = "26S-c0-Djb"; */
+"26S-c0-Djb.normalTitle" = "اللغة";
+
+/* Class = "UILabel"; text = "Ingredient Warnings"; ObjectID = "30f-t4-yi4"; */
+"30f-t4-yi4.text" = "التحذيرات";
+
+/* Class = "UIButton"; normalTitle = "Offers"; ObjectID = "3QE-N9-WzR"; */
+"3QE-N9-WzR.normalTitle" = "العروض";
+
+/* Class = "UILabel"; text = "Food Quality"; ObjectID = "3dE-7T-eTt"; */
+"3dE-7T-eTt.text" = "جودة الطعام";
+
+/* Class = "UILabel"; text = "Dinner"; ObjectID = "4EY-xO-Qjh"; */
+"4EY-xO-Qjh.text" = "عشاء";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "5hF-Hh-cZd"; */
+"5hF-Hh-cZd.placeholder" = "بحث";
+
+/* Class = "UILabel"; text = "Hospitality"; ObjectID = "7nn-DW-w5m"; */
+"7nn-DW-w5m.text" = "مستوي الضيافة";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "A9U-cL-DVB"; */
+"A9U-cL-DVB.placeholder" = "بحث";
+
+/* Class = "UIButton"; normalTitle = "Rate"; ObjectID = "G2r-Bt-rEy"; */
+"G2r-Bt-rEy.normalTitle" = "تقييم";
+
+/* Class = "UILabel"; text = "Overall Experience"; ObjectID = "HXc-cS-TD6"; */
+"HXc-cS-TD6.text" = "مدي تقييمك لزيارتك بشكل عام";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "IX4-Ie-ATU"; */
+"IX4-Ie-ATU.normalTitle" = "إلغاء";
+
+/* Class = "UILabel"; text = "Lunch"; ObjectID = "J5N-hn-ggG"; */
+"J5N-hn-ggG.text" = "غداء";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "JnZ-6x-nQO"; */
+"JnZ-6x-nQO.text" = "التفاصيل";
+
+/* Class = "UILabel"; text = "What was your impressions Of: "; ObjectID = "MAO-lq-cjN"; */
+"MAO-lq-cjN.text" = "ما هو انطباعك عن :";
+
+/* Class = "UILabel"; text = "Social-Media"; ObjectID = "N3t-7a-57K"; */
+"N3t-7a-57K.text" = "مواقع التواصل الاجتماعي";
+
+/* Class = "UITextField"; placeholder = "Write your message"; ObjectID = "NYa-Qc-cdc"; */
+"NYa-Qc-cdc.placeholder" = "اكتب رسالة";
+
+/* Class = "UITextField"; placeholder = "Other"; ObjectID = "ODA-gI-QAQ"; */
+"ODA-gI-QAQ.placeholder" = "أخري";
+
+/* Class = "UILabel"; text = "Friends"; ObjectID = "Piu-ub-70I"; */
+"Piu-ub-70I.text" = "الاصدقاء";
+
+/* Class = "UIButton"; normalTitle = "Offers"; ObjectID = "Pxu-eA-cRY"; */
+"Pxu-eA-cRY.normalTitle" = "العروض";
+
+/* Class = "UILabel"; text = "Thank you for your valuable feedback. If you would like to be on our mailing list, please enter your details below:"; ObjectID = "Qdp-yA-cl7"; */
+"Qdp-yA-cl7.text" = "شكرا جزيلا علي ملاحظاتك القيمة. اذا اردت ان تكون مسجل ضمن القائمة البريدية. الرجاء اخال بياناتك التالية: ";
+
+/* Class = "UIButton"; normalTitle = "Enter Menu"; ObjectID = "U1U-7R-5Vz"; */
+"U1U-7R-5Vz.normalTitle" = "اضغط هنا";
+
+/* Class = "UILabel"; text = "Breakfast"; ObjectID = "V1I-bx-37D"; */
+"V1I-bx-37D.text" = "إفطار";
+
+/* Class = "UITextField"; placeholder = "Time/Date of visit"; ObjectID = "WUb-SO-RIB"; */
+"WUb-SO-RIB.placeholder" = "وقت وتاريخ الزيارة";
+
+/* Class = "UILabel"; text = "Other"; ObjectID = "WZJ-8S-S2M"; */
+"WZJ-8S-S2M.text" = "أخري";
+
+/* Class = "UILabel"; text = "We are committed to providing you with the best dining experience possible. Please take a moment to tell us about your experience today."; ObjectID = "WvA-Ac-U8z"; */
+"WvA-Ac-U8z.text" = "نحن ملتزون بتقديم أفضل تجربة طعام ممكنة إليك. يرجي قضاء بعض الوقت لتخبرنا عن تجربتك اليوم";
+
+/* Class = "UILabel"; text = "Add Comment"; ObjectID = "Xdl-3O-zLR"; */
+"Xdl-3O-zLR.text" = "أضف تعليق";
+
+/* Class = "UILabel"; text = "Nisantasi"; ObjectID = "ZKk-iz-96E"; */
+"ZKk-iz-96E.text" = "Nisantasi";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ebm-Vy-crY"; */
+"ebm-Vy-crY.normalTitle" = "اضغط";
+
+/* Class = "UITextField"; placeholder = "Any comments you may have for us:"; ObjectID = "g9P-hd-lgt"; */
+"g9P-hd-lgt.placeholder" = "تعليق";
+
+/* Class = "UILabel"; text = "How did you hear about us ?"; ObjectID = "gKF-Zh-51b"; */
+"gKF-Zh-51b.text" = "كيف سمعت عنا ؟";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "iyW-Fq-p2F"; */
+"iyW-Fq-p2F.placeholder" = "العنوان";
+
+/* Class = "UIButton"; normalTitle = "Offers"; ObjectID = "jci-oM-2AQ"; */
+"jci-oM-2AQ.normalTitle" = "العروض";
+
+/* Class = "UITextField"; placeholder = "E-Mail"; ObjectID = "nHh-On-M94"; */
+"nHh-On-M94.placeholder" = "البريد الالكتروني";
+
+/* Class = "UILabel"; text = "Advertising"; ObjectID = "rjF-Wr-9TL"; */
+"rjF-Wr-9TL.text" = "إعلان";
+
+/* Class = "UILabel"; text = "Recommended items"; ObjectID = "tTX-yp-cMM"; */
+"tTX-yp-cMM.text" = "وجبات مقترحة";
+
+/* Class = "UILabel"; text = "Beverages Quality"; ObjectID = "uXq-dN-D4W"; */
+"uXq-dN-D4W.text" = "جودة المشروبات";
+
+/* Class = "UILabel"; text = "Nisantasi"; ObjectID = "v4A-Gi-XOW"; */
+"v4A-Gi-XOW.text" = "Nisantasi";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "vkc-VC-kI3"; */
+"vkc-VC-kI3.placeholder" = "الاسم";
+
+/* Class = "UITextField"; placeholder = "Tel/Mobile"; ObjectID = "xBd-jp-KgK"; */
+"xBd-jp-KgK.placeholder" = "تليفون / محمول";
+
+/* Class = "UIButton"; 2AQ.normalTitle = "Guest Comment"; ObjectID = "5rf-tD-2AQ"; */
+"5rf-tD-jYn.normalTitle" = "تقييم العميل";
+
+

@@ -6,13 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Merriweather-Bold.ttf">
-            <string>Merriweather-Bold</string>
-        </array>
         <array key="Merriweather-Regular.ttf">
             <string>Merriweather-Regular</string>
         </array>
@@ -21,91 +19,70 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubMenuCell" id="gTV-IL-0wX" customClass="SubMenuCell" customModule="NisantasiMenu" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="233" height="209"/>
+            <rect key="frame" x="0.0" y="0.0" width="284" height="216"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="233" height="209"/>
+                <rect key="frame" x="0.0" y="0.0" width="284" height="216"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="799-8O-s3w">
-                        <rect key="frame" x="0.0" y="0.0" width="233" height="209"/>
+                        <rect key="frame" x="0.0" y="0.0" width="284" height="216"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resturant.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hYL-Dd-Z7e">
-                                <rect key="frame" x="0.0" y="0.0" width="233" height="209"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="CornerRaduis">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <rect key="frame" x="0.0" y="0.0" width="284" height="173.5"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMb-Tj-J1i" customClass="CustomGradient" customModule="NisantasiMenu" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="109" width="233" height="100"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcG-Ak-Kq7">
+                                <rect key="frame" x="8" y="183.5" width="199" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="OIs-VL-RZ3"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="bje-NX-2hN"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
-                                        <color key="value" white="0.2479112413" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="CornerRaduis">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="djB-gw-clO">
-                                <rect key="frame" x="10" y="154.5" width="87" height="44.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcG-Ak-Kq7">
-                                        <rect key="frame" x="0.0" y="0.0" width="87" height="23"/>
-                                        <fontDescription key="fontDescription" name="Merriweather-Bold" family="Merriweather" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="june, 1 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9J6-UM-09A">
-                                        <rect key="frame" x="0.0" y="29" width="87" height="15.5"/>
-                                        <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAQ-4W-ZtR">
-                                <rect key="frame" x="183.5" y="183.5" width="18.5" height="15.5"/>
-                                <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="16"/>
+                                <color key="textColor" name="OrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starwhite" translatesAutoresizingMaskIntoConstraints="NO" id="8Qj-Cw-bTi">
-                                <rect key="frame" x="208" y="184" width="15" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="x3r-Wx-DqT">
+                                <rect key="frame" x="215" y="194" width="65" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="7Te-sc-w1Z"/>
-                                    <constraint firstAttribute="width" constant="15" id="fre-ih-oCv"/>
+                                    <constraint firstAttribute="width" constant="65" id="DMz-0Q-DXz"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="15"/>
+                                <color key="textColor" name="OrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RE1-eq-yyh">
+                                <rect key="frame" x="199" y="-2" width="80" height="40"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="special.png" translatesAutoresizingMaskIntoConstraints="NO" id="FUb-xp-7EO">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ranking.png" translatesAutoresizingMaskIntoConstraints="NO" id="98w-Nr-qz3">
+                                        <rect key="frame" x="40" y="0.0" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2RM-gY-nSV"/>
+                                    <constraint firstAttribute="width" constant="80" id="ZhT-uH-vNc"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ZMb-Tj-J1i" secondAttribute="bottom" id="A0i-YA-Khg"/>
                             <constraint firstAttribute="trailing" secondItem="hYL-Dd-Z7e" secondAttribute="trailing" id="C9F-8F-mbP"/>
-                            <constraint firstAttribute="trailing" secondItem="8Qj-Cw-bTi" secondAttribute="trailing" constant="10" id="Der-OF-zfp"/>
+                            <constraint firstItem="EcG-Ak-Kq7" firstAttribute="leading" secondItem="799-8O-s3w" secondAttribute="leading" constant="8" id="GEc-kA-Kbd"/>
                             <constraint firstItem="hYL-Dd-Z7e" firstAttribute="leading" secondItem="799-8O-s3w" secondAttribute="leading" id="TEP-PR-00H"/>
-                            <constraint firstItem="8Qj-Cw-bTi" firstAttribute="leading" secondItem="dAQ-4W-ZtR" secondAttribute="trailing" constant="6" id="Xg3-W6-Fxp"/>
-                            <constraint firstItem="dAQ-4W-ZtR" firstAttribute="centerY" secondItem="9J6-UM-09A" secondAttribute="centerY" id="YYh-Vf-Gre"/>
-                            <constraint firstAttribute="trailing" secondItem="ZMb-Tj-J1i" secondAttribute="trailing" id="aoS-7b-Q9i"/>
-                            <constraint firstItem="djB-gw-clO" firstAttribute="leading" secondItem="799-8O-s3w" secondAttribute="leading" constant="10" id="aqP-I1-M54"/>
+                            <constraint firstItem="RE1-eq-yyh" firstAttribute="top" secondItem="799-8O-s3w" secondAttribute="top" constant="-2" id="f4N-Wl-cDL"/>
+                            <constraint firstItem="EcG-Ak-Kq7" firstAttribute="top" secondItem="hYL-Dd-Z7e" secondAttribute="bottom" constant="10" id="f88-sQ-mlR"/>
                             <constraint firstItem="hYL-Dd-Z7e" firstAttribute="top" secondItem="799-8O-s3w" secondAttribute="top" id="fwh-qw-Q0Q"/>
-                            <constraint firstAttribute="bottom" secondItem="hYL-Dd-Z7e" secondAttribute="bottom" id="nSb-aW-c4C"/>
-                            <constraint firstItem="8Qj-Cw-bTi" firstAttribute="centerY" secondItem="dAQ-4W-ZtR" secondAttribute="centerY" id="oiS-zD-xh2"/>
-                            <constraint firstItem="ZMb-Tj-J1i" firstAttribute="leading" secondItem="799-8O-s3w" secondAttribute="leading" id="xru-C8-WHW"/>
-                            <constraint firstAttribute="bottom" secondItem="djB-gw-clO" secondAttribute="bottom" constant="10" id="ysi-nK-ITf"/>
+                            <constraint firstAttribute="trailing" secondItem="x3r-Wx-DqT" secondAttribute="trailing" constant="4" id="gcn-Ou-2ax"/>
+                            <constraint firstItem="x3r-Wx-DqT" firstAttribute="centerY" secondItem="EcG-Ak-Kq7" secondAttribute="centerY" id="o26-Jr-v8I"/>
+                            <constraint firstAttribute="trailing" secondItem="RE1-eq-yyh" secondAttribute="trailing" constant="5" id="sDH-M4-Bgb"/>
+                            <constraint firstAttribute="bottom" secondItem="EcG-Ak-Kq7" secondAttribute="bottom" constant="12" id="xFb-qc-ELy"/>
+                            <constraint firstItem="x3r-Wx-DqT" firstAttribute="leading" secondItem="EcG-Ak-Kq7" secondAttribute="trailing" constant="8" id="ytj-Gf-IuV"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="799-8O-s3w" secondAttribute="trailing" id="7vJ-ZI-vm4"/>
                 <constraint firstItem="799-8O-s3w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="97W-Ry-41o"/>
@@ -113,19 +90,24 @@
                 <constraint firstAttribute="bottom" secondItem="799-8O-s3w" secondAttribute="bottom" id="Kgj-vA-0Mq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="233" height="209"/>
+            <size key="customSize" width="284" height="216"/>
             <connections>
-                <outlet property="dateLabel" destination="9J6-UM-09A" id="Dya-FF-0Km"/>
                 <outlet property="imageView" destination="hYL-Dd-Z7e" id="nCZ-c4-5fK"/>
-                <outlet property="rateLabel" destination="dAQ-4W-ZtR" id="yf3-pD-1js"/>
-                <outlet property="starImage" destination="8Qj-Cw-bTi" id="t9b-EJ-y0J"/>
+                <outlet property="mStackView" destination="RE1-eq-yyh" id="Iax-dU-2VB"/>
+                <outlet property="priceLabel" destination="x3r-Wx-DqT" id="FdT-NC-8wF"/>
+                <outlet property="rankingImage" destination="98w-Nr-qz3" id="WKd-fq-nWX"/>
+                <outlet property="specialImage" destination="FUb-xp-7EO" id="ChD-dP-WkN"/>
                 <outlet property="titleLabel" destination="EcG-Ak-Kq7" id="0Iq-4n-o8M"/>
             </connections>
-            <point key="canvasLocation" x="116.5" y="131.5"/>
+            <point key="canvasLocation" x="142" y="135"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ranking.png" width="100" height="96"/>
         <image name="resturant.jpg" width="277" height="200"/>
-        <image name="starwhite" width="25" height="24"/>
+        <image name="special.png" width="100" height="96"/>
+        <namedColor name="OrangeColor">
+            <color red="0.93199998140335083" green="0.17100000381469727" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

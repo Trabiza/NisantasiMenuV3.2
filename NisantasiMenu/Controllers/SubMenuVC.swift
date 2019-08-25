@@ -18,6 +18,8 @@ class SubMenuVC: BaseVC {
     @IBOutlet weak var mCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var sectionTitle: UILabel!
+    @IBOutlet weak var servedLabel: UILabel!
     
     let menuCell: String = "SubMenuCell"
     let titleCell: String = "MenuTitleCell"
@@ -25,28 +27,112 @@ class SubMenuVC: BaseVC {
     var sectionDic = [SubMenuSections.title: 0, SubMenuSections.menu: 1]
     
     var section: Section?
+    
     var itemList: [Item] = []
     var searchItemList: [Item] = []
+    
+    var mSectionID: String = ""
+    var sectionsArr: [Section] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        HelperManager.RTLBtn(backBtn)
         hideKeyboardWhenTappedAround()
         setupMenu()
-        setSearchUI()
         
-        guard let id = section?.id else{
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadSection(_:)), name: .didPassSection, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.searchAction(_:)), name: .didPassSearch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadSections(_:)), name: .didPassSections, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadSubSection(_:)), name: .didPassSubSections, object: nil)
+    }
+    
+    
+    @objc func loadSections(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let id = dict["key"] as? Int {
+                mSectionID = "\(id)"
+            }
+            
+            if let list = dict["list"] as? [Section]{
+                print("sections are \(list.count)")
+                self.sectionsArr = list
+            }
+        }
+    }
+    
+    @objc func loadSection(_ notification: NSNotification) {
+        print(notification.userInfo ?? "")
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let mSection = dict["section"] as? Section{
+                self.section = mSection
+                setUpSection()
+                showServedLabel(section: mSection)
+            }
+        }
+    }
+    
+    @objc func loadSubSection(_ notification: NSNotification) {
+        
+        if let dict = notification.userInfo as NSDictionary? {
+            if let items = dict["items"] as? [Item], let mSection = dict["section"] as? Section{
+                print("sub sections \(items.count)")
+                self.section = mSection
+                self.itemList = items
+                self.searchItemList = items
+                self.mCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func showServedLabel(section: Section){
+        
+        guard let trans = section.trans else{
             return
         }
-        if let model = DefaultManager.getSectionDefault(key: "\(id)"){
+        if trans.isEmpty {
+            return
+        }
+        if let title = trans[0].name {
+            if title.lowercased() == Config.BREAKFAST.lowercased() || title.lowercased() == Config.arBREAKFAST.lowercased(){
+                servedLabel.isHidden = false
+            }else{
+                servedLabel.isHidden = true
+            }
+        }
+    }
+    
+    @objc func searchAction(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let txt = dict["search"] as? String{
+                print("text is \(txt)")
+                searchFunc(txt)
+            }
+        }
+    }
+    
+    func setUpSection(){
+        itemList.removeAll()
+        searchItemList.removeAll()
+        mCollectionView.reloadData()
+        
+        if let trans = section?.trans {
+            if !trans.isEmpty {
+                if let title = trans[0].name {
+                    sectionTitle.text = title
+                }
+            }
+        }
+        loadItems()
+        /*if let model = DefaultManager.getSectionDefault(key: "\(id)"){
             print("offline mode")
             loadItemOffilne(model: model)
         }else{
             loadItems()
-        }
+        }*/
+        mCollectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+       
     }
-    
     
     func setSearchUI(){
         HelperManager.searchBarStyle(searchBar: searchBar)
@@ -84,6 +170,42 @@ class SubMenuVC: BaseVC {
         
     }
     
+    @objc func searchFunc(_ searchText:String) {
+        
+        if searchText.isEmpty {
+            searchItemList = itemList
+            mCollectionView.reloadData()
+            return
+        }
+        searchItemList.removeAll()
+        sectionsArr.forEach { (section) in
+            if let items = section.items {
+                items.forEach({ (item) in
+                    if let trans = item.trans {
+                        if !trans.isEmpty {
+                            if let name = trans[0].name {
+                                if name.lowercased().contains(searchText.lowercased()) {
+                                    searchItemList.append(item)
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+        }
+        
+        /*searchItemList = itemList.filter({ (item) -> Bool in
+            if let trans = item.trans {
+                if !trans.isEmpty {
+                    return (trans[0].name?.lowercased().contains(searchText.lowercased()))!
+                }
+            }
+            return false
+        })*/
+        mCollectionView.reloadData()
+        
+    }
+    
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -94,38 +216,30 @@ class SubMenuVC: BaseVC {
     }
     
     func loadItems(){
+        print("items loading....")
         guard let id = section?.id else{
             return
         }
-        showLoadingView()
-        APIManager.itemsAPI(id: "\(id)", view: self.view) { (error, success, model) in
-            self.hideLoadindView()
-            if error != nil || !success{
+        if let model = DefaultManager.getAllModelsDefault(key: UserDataManager.getUserLanguage()) {
+            print("items loading.....\(UserDataManager.getUserLanguage())")
+            guard let menus = model.data else{
                 return
             }
-            DefaultManager.saveSectionDefault(model: model!, key: "\(id)")
-            guard let data = model?.data else {
+            print("defalut entered menu \(DefaultManager.getEnteredMenuDefault())")
+            guard let mSections = menus[DefaultManager.getEnteredMenuDefault()].sections else {
                 return
             }
-            guard let items = data[0].items else{
-                return
+            mSections.forEach { (mSection) in
+                if mSection.id == id {
+                    guard let mItems = mSection.items else {
+                        return
+                    }
+                    self.itemList = mItems
+                    self.searchItemList = mItems
+                    self.mCollectionView.reloadData()
+                }
             }
-            self.itemList = items
-            self.searchItemList = items
-            self.mCollectionView.reloadData()
         }
-    }
-    
-    func loadItemOffilne(model: ItemModel){
-        guard let data = model.data else {
-            return
-        }
-        guard let items = data[0].items else{
-            return
-        }
-        self.itemList = items
-        self.searchItemList = items
-        self.mCollectionView.reloadData()
     }
 
 }
@@ -135,106 +249,104 @@ extension SubMenuVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionDic.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if section == sectionDic[.title] {
-            return 1
-        }else if section == sectionDic[.menu] {
-            return searchItemList.count
-        }
-        return 0
+        return searchItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == sectionDic[.title] {
-            let cell:MenuTitleCell = collectionView.dequeueReusableCell(withReuseIdentifier: titleCell, for: indexPath) as! MenuTitleCell
-            if let trans = section?.trans {
-                if !trans.isEmpty {
-                    if let title = trans[0].name {
-                        cell.titleLabel.text = title
-                    }
-                    if let description = trans[0].tranDescription {
-                        cell.detailsLabel.text = description
-                    }
+        
+        let cell:SubMenuCell = collectionView.dequeueReusableCell(withReuseIdentifier: menuCell, for: indexPath) as! SubMenuCell
+        
+        cell.shadowAndBorderForCell(cell: cell)
+        cell.imageView.layer.cornerRadius = 12
+        
+        if let trans = searchItemList[indexPath.row].trans {
+            if !trans.isEmpty {
+                if let title = trans[0].name {
+                    cell.titleLabel.text = title
                 }
             }
-            return cell
-        }else {
-            let cell:SubMenuCell = collectionView.dequeueReusableCell(withReuseIdentifier: menuCell, for: indexPath) as! SubMenuCell
-            if let trans = searchItemList[indexPath.row].trans {
-                if !trans.isEmpty {
-                    if let title = trans[0].name {
-                        cell.titleLabel.text = title
-                    }
-                }
-            }
-            if let images = searchItemList[indexPath.row].images {
-                if !images.isEmpty {
-                    if let mURL = images[0].url {
-                        cell.setImage(url: mURL)
-                    }
-                }else{
-                    cell.imageView.image = UIImage(named: Config.placeholderImage)
-                }
-            }
-            if let mDate = searchItemList[indexPath.row].createAt {
-                if let dateAsDate = HelperManager.getDateFromStringV2(dateString: mDate) {
-                    cell.dateLabel.text = HelperManager.convertDate(date: dateAsDate)
-                }
-            }
-            if let rate = searchItemList[indexPath.row].rate {
-                cell.rateLabel.text = "\(rate)"
-            }
-            return cell
         }
+        if let images = searchItemList[indexPath.row].images {
+            if !images.isEmpty {
+                if let mURL = images[0].url {
+                    cell.setImage(url: mURL)
+                }
+            }else{
+                cell.imageView.image = UIImage(named: Config.placeholderImage)
+            }
+        }
+        if let prices = searchItemList[indexPath.row].prices {
+            if !prices.isEmpty {
+                if let price = prices[0].price {
+                    cell.priceLabel.text = "\(price) \(NSLocalizedString("currency", comment: ""))"
+                }
+            }
+        }
+        if let special = searchItemList[indexPath.row].markAsDignature {
+            print("markAsDignature is \(special)")
+            if special == 0 {
+                cell.specialImage.isHidden = true
+            }else{
+                cell.specialImage.isHidden = false
+            }
+        }
+        if let ranking = searchItemList[indexPath.row].salesRanking {
+            if ranking == 0 {
+                cell.rankingImage.isHidden = true
+            }else{
+                cell.rankingImage.isHidden = false
+            }
+        }
+        return cell
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        /*if DefaultManager.isLanguageChangedDefault() != nil {
+            UserDefaults.standard.removeObject(forKey: Config.changeLanguageDefault)
+        }*/
         
         guard let itemID = searchItemList[indexPath.row].id else {
             return
         }
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC {
+        if let desVC = mainStoryboard.instantiateViewController(withIdentifier: "DetailsContainerVC") as? DetailsContainerVC {
             desVC.itemID = "\(itemID)"
+            desVC.menuList = self.sectionsArr
+            desVC.section = self.section
+            desVC.item = searchItemList[indexPath.row]
+            desVC.row = indexPath.row
+            DefaultManager.saveDetailsRowDefault(value: indexPath.row)
             present(desVC, animated: true)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == sectionDic[.title] {
-            return CGSize(width: view.frame.width, height: 120)
-        }else {
-            let width = (view.frame.width / 3) - 16
-            return CGSize(width: width, height: width)
-        }
         
+        let width = (view.frame.width / 2) - 8
+        return CGSize(width: width, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if section == sectionDic[.menu] {
-            return 6
-        }
-        return 0
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if section == sectionDic[.menu] {
-            return 6
-        }
-        return 0
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == sectionDic[.menu] {
-            return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        }
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     }
 }
+
+
+

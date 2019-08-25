@@ -112,7 +112,7 @@ extension LanguageVC: UITableViewDelegate, UITableViewDataSource {
             
             L102Language.setAppleLAnguageTo(lang: Config.Arabic)
             UIView.appearance().semanticContentAttribute = .forceRightToLeft
-            
+
             let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
             rootviewcontroller.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
             let mainwindow = (UIApplication.shared.delegate?.window!)!

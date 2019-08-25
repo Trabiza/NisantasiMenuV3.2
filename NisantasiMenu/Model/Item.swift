@@ -38,12 +38,16 @@ struct Item: Codable {
     let preperationTime: Int?
     let recommendedItem: String?
     let markAsNew, markAsDignature, status: Int?
+    let salesRanking: Int?
+    let deliverable: Int?
     let rate: Float?
     let ingredientWarnings: String?
     let trans: [ItemTran]?
     let images: [Image]?
-    let videos: [Videos]?
     let prices: [Prices]?
+    let videos: [Videos]?
+    let recommendedItems: [RecommendedItem]?
+    
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -52,10 +56,13 @@ struct Item: Codable {
         case preperationTime = "preperation_time"
         case recommendedItem = "recommended_item"
         case markAsNew = "mark_as_new"
-        case markAsDignature = "mark_as_dignature"
+        case markAsDignature = "mark_as_signature"
         case status
+        case deliverable
+        case salesRanking = "sales_ranking"
         case createAt = "created_at"
         case ingredientWarnings = "ingredient_warnings"
+        case recommendedItems = "recommended_items"
         case trans, images
         case rate
         case videos

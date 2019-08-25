@@ -15,20 +15,27 @@ class DetailsVC: BaseVC {
     @IBOutlet weak var recommenedCollection: UICollectionView!
     @IBOutlet weak var ingredientCollection: UICollectionView!
     
-    
     @IBOutlet weak var warningConstraint: NSLayoutConstraint!
     @IBOutlet weak var recommendedConstraint: NSLayoutConstraint!
     @IBOutlet weak var warningsL: UILabel!
     @IBOutlet weak var recommendedLabel: UILabel!
     
+    @IBOutlet weak var ingredientImage: UIImageView!
+    @IBOutlet weak var recommendedView: UIView!
+    @IBOutlet weak var recommendImage: UIImageView!
+    @IBOutlet weak var otlobImage: UIImageView!
+    @IBOutlet weak var uberEatsImage: UIImageView!
+    
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timrLabel: UILabel!
-    @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var rateImage: UIImageView!
     @IBOutlet weak var backBtn: UIButton!
+    
+    @IBOutlet weak var rightBtn: UIButton!
+    @IBOutlet weak var leftBtn: UIButton!
+    
+    @IBOutlet weak var servedLabel: UILabel!
+    @IBOutlet weak var servedConstraint: NSLayoutConstraint!
     
     let imagesCell: String = "ImagesCell"
     let recommendCell: String = "SubMenuCell"
@@ -49,46 +56,66 @@ class DetailsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        HelperManager.RTLBtn(backBtn)
+        RTL()
         player = BMPlayer()
         setupCollections()
-        //loadItem()
-        rateAction()
         
-        if let model = DefaultManager.getItemDefault(key: itemID) {
-            print("Offline mode")
-            setItem(model: model)
-        }else{
-            loadItem()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getItemID(_:)), name: .didPassItemID, object: nil)
+    }
+    
+    func RTL(){
+        if UserDataManager.getUserLanguage() == Config.Arabic {
+            rightBtn.transform = CGAffineTransform(scaleX: -1, y: 1)
+            leftBtn.transform = CGAffineTransform(scaleX: -1, y: 1)
         }
     }
     
-    func rateAction(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(DetailsVC.rateFun))
-        rateLabel.isUserInteractionEnabled = true
-        rateImage.isUserInteractionEnabled = true
-        rateLabel.addGestureRecognizer(tap)
-        rateImage.addGestureRecognizer(tap)
+    @objc func getItemID(_ notification: NSNotification) {
+        if let dict = notification.userInfo as NSDictionary? {
+            if let id = dict["itemID"] as? String, let item = dict["item"] as? Item {
+                itemID = "\(id)"
+                setItem(model: item)
+            }
+            if let section = dict["section"] as? Section {
+                showServedLabel(section: section)
+            }
+        }
     }
     
-    @objc func rateFun(sender:UITapGestureRecognizer) {
-        print("tap working")
-        performSegue(withIdentifier: "toRating", sender: nil)
+    @IBAction func nextRecommended(_ sender: Any) {
+        if UserDataManager.getUserLanguage() == Config.Arabic {
+            toPrevious()
+        }else{
+            toNext()
+        }
+        
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        setupCollections()
-        loadItem()
-    }*/
+    @IBAction func perviousRecommended(_ sender: Any) {
+        if UserDataManager.getUserLanguage() == Config.Arabic {
+            toNext()
+        }else{
+           toPrevious()
+        }
+    }
     
-    @IBAction func dismissAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        /*if mItem?.id == nil {
+    func toNext(){
+        guard let indexPath = recommenedCollection.indexPathsForVisibleItems.first.flatMap({
+            IndexPath(item: $0.row + 1, section: $0.section)
+        }), recommenedCollection.cellForItem(at: indexPath) != nil else {
             return
         }
-        performSegue(withIdentifier: ratingSegue, sender: nil)*/
+        recommenedCollection.scrollToItem(at: indexPath, at: .left, animated: true)
+    }
+    
+    func toPrevious(){
+        guard let indexPath = recommenedCollection.indexPathsForVisibleItems.first.flatMap({
+            IndexPath(item: $0.row + 1, section: $0.section)
+        }), recommenedCollection.cellForItem(at: indexPath) != nil else {
+            return
+        }
+        print("clickeed \(indexPath.row)")
+        recommenedCollection.scrollToItem(at: indexPath, at: .right, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,66 +125,57 @@ class DetailsVC: BaseVC {
         }
     }
     
-    func loadItem() {
+    func loadItem(section: Section) {
         showLoadingView()
-        APIManager.itemDetailsAPI(id: itemID, view: self.view) { (error, success, model) in
-            self.hideLoadindView()
-            if error != nil || !success{
-                return
-            }
-            DefaultManager.saveItemDefault(model: model!, key: self.itemID)
-            self.setItem(model: model!)
-        }
+   
     }
     
-    func setItem(model: ItemDetailsModel){
-        if let items = model.data?.items {
-            if !items.isEmpty {
-                
-                if let videos = items[0].videos {
-                    self.itemVideos = videos
-                    self.imagesCollection.reloadData()
-                }
-                
-                if let images = items[0].images {
-                    self.itemImages = images
-                    self.imagesCollection.reloadData()
-                }
-            }
-            
-            self.setUI(mItem: items[0])
+    func setItem(model: Item){
+        
+        
+        if let videos = model.videos {
+            self.itemVideos = videos
+            self.imagesCollection.reloadData()
         }
-        
-        if let rating = model.data?.rating {
-            self.rateLabel.text = "\(rating) rate"
+        if let images = model.images {
+            self.itemImages = images
+            self.imagesCollection.reloadData()
         }
+        self.setUI(mItem: model)
         
-        
-        if let recommendedItem = model.data?.recommendedItems {
-            if recommendedItem.isEmpty {
+        if let recommenedations = model.recommendedItems {
+            print("recommenedations \(recommenedations.count)")
+            if recommenedations.isEmpty {
                 self.recommendedLabel.isHidden = true
-                self.recommendedConstraint.constant = 1
+                self.recommendedView.isHidden = true
+                self.recommendImage.isHidden = true
             }else{
-                self.recommendedItem = recommendedItem
+                self.recommendedItem = recommenedations
                 self.recommenedCollection.reloadData()
             }
+        }else{
+            self.recommendedLabel.isHidden = true
+            self.recommendedView.isHidden = true
+            self.recommendImage.isHidden = true
         }
         
-        if let items = model.data?.items {
-            if !items.isEmpty {
-                if let gradient = items[0].ingredientWarnings {
-                    print("warnings are \(gradient)")
-                    self.itemWarnings = HelperManager.splitString(text: gradient)
-                    if self.itemWarnings.isEmpty {
-                        self.warningsL.isHidden = true
-                        self.warningConstraint.constant = 1
-                    }else{
-                        self.ingredientCollection.reloadData()
-                    }
-                }else{
+        if let warnings = model.ingredientWarnings {
+            if !warnings.isEmpty {
+                self.itemWarnings = HelperManager.splitString(text: warnings)
+                if self.itemWarnings.isEmpty {
                     self.warningsL.isHidden = true
+                    //self.warningConstraint.constant = 1
+                    self.ingredientImage.isHidden = true
+                }else{
+                    self.ingredientCollection.reloadData()
                 }
+            }else{
+                self.ingredientImage.isHidden = true
+                self.warningsL.isHidden = true
             }
+        }else{
+            self.ingredientImage.isHidden = true
+            self.warningsL.isHidden = true
         }
     }
     
@@ -177,15 +195,32 @@ class DetailsVC: BaseVC {
         if let prices = mItem.prices {
             if !prices.isEmpty {
                 if let price = prices[0].price {
-                    priceLabel.text = "\(price)"
+                    priceLabel.text = "\(price) \(NSLocalizedString("currency", comment: ""))"
                 }
             }
         }
-        
-        if let preparetionTime = mItem.preperationTime {
-            timrLabel.text = "\(preparetionTime) min"
+        if let delviered = mItem.deliverable {
+            if delviered == 0 {
+                self.uberEatsImage.alpha = 0.5
+                self.otlobImage.alpha = 0.5
+            }
         }
+    }
+    
+    func showServedLabel(section: Section){
         
+        guard let trans = section.trans else{
+            return
+        }
+        if trans.isEmpty {
+            return
+        }
+        if let title = trans[0].name {
+            if title.lowercased() == Config.BREAKFAST.lowercased() || title.lowercased() == Config.arBREAKFAST.lowercased(){
+                servedLabel.isHidden = false
+                servedConstraint.constant = 45
+            }
+        }
     }
     
     func setupCollections() {
@@ -242,6 +277,7 @@ extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             }
         }else if collectionView.tag == 1{
             let cell: SubMenuCell = recommenedCollection.dequeueReusableCell(withReuseIdentifier: recommendCell, for: indexPath) as! SubMenuCell
+            cell.shadowAndBorderForCell(cell: cell)
             
             if let name = recommendedItem[indexPath.row].name {
                 cell.titleLabel.text = name
@@ -249,26 +285,28 @@ extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             if let url = recommendedItem[indexPath.row].imagesURL {
                 cell.setImage(url: url)
             }
-            if let mDate = recommendedItem[indexPath.row].createdAt {
-                if let dateAsDate = HelperManager.getDateFromStringV2(dateString: mDate) {
-                    cell.dateLabel.text = HelperManager.convertDate(date: dateAsDate)
-                }
+            if let price = recommendedItem[indexPath.row].price {
+                cell.priceLabel.text = "\(price) \(NSLocalizedString("currency", comment: ""))"
             }
+            cell.specialImage.isHidden = true
+            cell.rankingImage.isHidden = true
             return cell
         }else{
             let cell: IngredientCell = ingredientCollection.dequeueReusableCell(withReuseIdentifier: ingredientCell, for: indexPath) as! IngredientCell
             cell.imageView.image = UIImage(named: itemWarnings[indexPath.row])
+            cell.imageView.image = cell.imageView.image?.withRenderingMode(.alwaysTemplate)
+            cell.imageView.tintColor = UIColor.darkGray
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.tag == 0 {
-            let width = UIScreen.main.bounds.width
+            let width = self.view.bounds.width
             return CGSize(width: width, height: imagesCollection.frame.height)
         }else if collectionView.tag == 1{
-            let width = UIScreen.main.bounds.width / 4
-            return CGSize(width: width, height: recommenedCollection.frame.height)
+            let width = (recommenedCollection.bounds.width / 2) - 20
+            return CGSize(width: width, height: recommenedCollection.frame.height - 20)
         }else {
             let width = ingredientCollection.frame.height
             return CGSize(width: width, height: ingredientCollection.frame.height)
@@ -290,7 +328,7 @@ extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         if collectionView.tag == 0 {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }else if collectionView.tag == 1 {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            return UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         }else{
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -300,7 +338,7 @@ extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         if collectionView.tag == 0 {
             return 0
         }else if collectionView.tag == 1{
-            return 6
+            return 8
         }else{
             return 8
         }
@@ -310,7 +348,7 @@ extension DetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         if collectionView.tag == 0 {
             return 0
         }else if collectionView.tag == 1{
-            return 6
+            return 8
         }else{
             return 8
         }

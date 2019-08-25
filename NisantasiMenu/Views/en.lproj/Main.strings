@@ -1,0 +1,150 @@
+
+/* Class = "UILabel"; text = "Ingredient Warnings"; ObjectID = "30f-t4-yi4"; */
+"30f-t4-yi4.text" = "Ingredient Warnings";
+
+/* Class = "UILabel"; text = "Food Quality"; ObjectID = "3dE-7T-eTt"; */
+"3dE-7T-eTt.text" = "Food Quality";
+
+/* Class = "UILabel"; text = "Dinner"; ObjectID = "4EY-xO-Qjh"; */
+"4EY-xO-Qjh.text" = "Dinner";
+
+/* Class = "UILabel"; text = "EGP 130"; ObjectID = "53S-ou-vOt"; */
+"53S-ou-vOt.text" = "EGP 130";
+
+/* Class = "UILabel"; text = "Hospitality"; ObjectID = "7nn-DW-w5m"; */
+"7nn-DW-w5m.text" = "Hospitality";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "Cc1-QD-SJ4"; */
+"Cc1-QD-SJ4.text" = "Language";
+
+/* Class = "UILabel"; text = "Served from 10:00 AM till 1:00 PM"; ObjectID = "E2b-gY-JmA"; */
+"E2b-gY-JmA.text" = "Served from 10:00 AM till 1:00 PM";
+
+/* Class = "UIButton"; normalTitle = "Rate"; ObjectID = "G2r-Bt-rEy"; */
+"G2r-Bt-rEy.normalTitle" = "Rate";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "GX1-GL-WYI"; */
+"GX1-GL-WYI.text" = "Details";
+
+/* Class = "UILabel"; text = "Overall Experience"; ObjectID = "HXc-cS-TD6"; */
+"HXc-cS-TD6.text" = "Overall Experience";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "IX4-Ie-ATU"; */
+"IX4-Ie-ATU.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Lunch"; ObjectID = "J5N-hn-ggG"; */
+"J5N-hn-ggG.text" = "Lunch";
+
+/* Class = "UILabel"; text = "Served from 10:00 AM till 1:00 PM"; ObjectID = "Lwo-jF-SF6"; */
+"Lwo-jF-SF6.text" = "Served from 10:00 AM till 1:00 PM";
+
+/* Class = "UILabel"; text = "What was your impressions Of: "; ObjectID = "MAO-lq-cjN"; */
+"MAO-lq-cjN.text" = "What was your impressions Of: ";
+
+/* Class = "UILabel"; text = "Served from 10:00 AM till 1:00 PM"; ObjectID = "MVE-wB-Pel"; */
+"MVE-wB-Pel.text" = "Served from 10:00 AM till 1:00 PM";
+
+/* Class = "UILabel"; text = "Social-Media"; ObjectID = "N3t-7a-57K"; */
+"N3t-7a-57K.text" = "Social-Media";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "NJ8-TK-huy"; */
+"NJ8-TK-huy.text" = "5";
+
+/* Class = "UITextField"; placeholder = "Other"; ObjectID = "ODA-gI-QAQ"; */
+"ODA-gI-QAQ.placeholder" = "Other";
+
+/* Class = "UILabel"; text = "Friends"; ObjectID = "Piu-ub-70I"; */
+"Piu-ub-70I.text" = "Friends";
+
+/* Class = "UILabel"; text = "Thank you for your valuable feedback. If you would like to be on our mailing list, please enter your details below:"; ObjectID = "Qdp-yA-cl7"; */
+"Qdp-yA-cl7.text" = "Thank you for your valuable feedback. If you would like to be on our mailing list, please enter your details below:";
+
+/* Class = "UILabel"; text = "ALL PRICES ARE SUBJECTED TO 12% SERVICE CHARGE AND 14% VAT"; ObjectID = "Szr-i5-ujT"; */
+"Szr-i5-ujT.text" = "ALL PRICES ARE SUBJECTED TO 12% SERVICE CHARGE AND 14% VAT";
+
+/* Class = "UIButton"; normalTitle = "Language"; ObjectID = "TIy-ho-lw8"; */
+"TIy-ho-lw8.normalTitle" = "Language";
+
+/* Class = "UILabel"; text = "Breakfast"; ObjectID = "V1I-bx-37D"; */
+"V1I-bx-37D.text" = "Breakfast";
+
+/* Class = "UITextField"; placeholder = "Time/Date of visit"; ObjectID = "WUb-SO-RIB"; */
+"WUb-SO-RIB.placeholder" = "Time/Date of visit";
+
+/* Class = "UILabel"; text = "Other"; ObjectID = "WZJ-8S-S2M"; */
+"WZJ-8S-S2M.text" = "Other";
+
+/* Class = "UILabel"; text = "22 min"; ObjectID = "WaW-Yy-V86"; */
+"WaW-Yy-V86.text" = "22 min";
+
+/* Class = "UILabel"; text = "We are committed to providing you with the best dining experience possible. Please take a moment to tell us about your experience today."; ObjectID = "WvA-Ac-U8z"; */
+"WvA-Ac-U8z.text" = "We are committed to providing you with the best dining experience possible. Please take a moment to tell us about your experience today.";
+
+/* Class = "UILabel"; text = "Soup"; ObjectID = "ack-dg-wPn"; */
+"ack-dg-wPn.text" = "Soup";
+
+/* Class = "UILabel"; text = "Recommended items"; ObjectID = "d5V-kr-RhW"; */
+"d5V-kr-RhW.text" = "Recommended items";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ebm-Vy-crY"; */
+"ebm-Vy-crY.normalTitle" = "Submit";
+
+/* Class = "UITextField"; placeholder = "Any comments you may have for us:"; ObjectID = "g9P-hd-lgt"; */
+"g9P-hd-lgt.placeholder" = "Any comments you may have for us:";
+
+/* Class = "UILabel"; text = "How did you hear about us ?"; ObjectID = "gKF-Zh-51b"; */
+"gKF-Zh-51b.text" = "How did you hear about us ?";
+
+/* Class = "UIButton"; normalTitle = "Guest Comment"; ObjectID = "hTV-Cj-mPK"; */
+"hTV-Cj-mPK.normalTitle" = "Guest Comment";
+
+/* Class = "UILabel"; text = "ALL PRICES ARE SUBJECTED TO 12% SERVICE CHARGE AND 14% VAT"; ObjectID = "iV8-NQ-ZRz"; */
+"iV8-NQ-ZRz.text" = "ALL PRICES ARE SUBJECTED TO 12% SERVICE CHARGE AND 14% VAT";
+
+/* Class = "UILabel"; text = "Soup"; ObjectID = "ivv-c5-iO6"; */
+"ivv-c5-iO6.text" = "Soup";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "iyW-Fq-p2F"; */
+"iyW-Fq-p2F.placeholder" = "Address";
+
+/* Class = "UITextField"; placeholder = "E-Mail"; ObjectID = "nHh-On-M94"; */
+"nHh-On-M94.placeholder" = "E-Mail";
+
+/* Class = "UILabel"; text = "Main Menu"; ObjectID = "pWz-Ft-5RP"; */
+"pWz-Ft-5RP.text" = "Main Menu";
+
+/* Class = "UIButton"; normalTitle = "Enter Menu"; ObjectID = "pgM-97-Vst"; */
+"pgM-97-Vst.normalTitle" = "Enter Menu";
+
+/* Class = "UILabel"; text = "Advertising"; ObjectID = "rjF-Wr-9TL"; */
+"rjF-Wr-9TL.text" = "Advertising";
+
+/* Class = "UIButton"; normalTitle = "Offers"; ObjectID = "sHM-gL-U4m"; */
+"sHM-gL-U4m.normalTitle" = "Offers";
+
+/* Class = "UILabel"; text = "Ingredient Warnings"; ObjectID = "sgg-rM-fnA"; */
+"sgg-rM-fnA.text" = "Ingredient Warnings";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "tG9-EB-XiA"; */
+"tG9-EB-XiA.text" = "Details";
+
+/* Class = "UILabel"; text = "Recommended items"; ObjectID = "tTX-yp-cMM"; */
+"tTX-yp-cMM.text" = "Recommended items";
+
+/* Class = "UILabel"; text = "EGP 130"; ObjectID = "uId-Gb-twc"; */
+"uId-Gb-twc.text" = "EGP 130";
+
+/* Class = "UILabel"; text = "Beverages Quality"; ObjectID = "uXq-dN-D4W"; */
+"uXq-dN-D4W.text" = "Beverages Quality";
+
+/* Class = "UILabel"; text = "Main Menu"; ObjectID = "uYV-7V-182"; */
+"uYV-7V-182.text" = "Main Menu";
+
+/* Class = "UILabel"; text = "Nisantasi"; ObjectID = "v4A-Gi-XOW"; */
+"v4A-Gi-XOW.text" = "Nisantasi";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "vkc-VC-kI3"; */
+"vkc-VC-kI3.placeholder" = "Name";
+
+/* Class = "UITextField"; placeholder = "Tel/Mobile"; ObjectID = "xBd-jp-KgK"; */
+"xBd-jp-KgK.placeholder" = "Tel/Mobile";

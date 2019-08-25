@@ -100,4 +100,26 @@ public class Parsing {
         }
         return shops!
     }
+    static func parseUpdate(jsonData: DataResponse<Any>?) -> ResponseUpdate? {
+        
+        var shops: ResponseUpdate??
+        do{
+            shops = try JSONDecoder().decode(ResponseUpdate.self, from: (jsonData?.data!)!)
+            
+        }catch {
+            print("Error: \(error)")
+        }
+        return shops!
+    }
+    static func parseNistansi(jsonData: DataResponse<Any>?) -> NistansiModel? {
+        
+        var shops: NistansiModel??
+        do{
+            shops = try JSONDecoder().decode(NistansiModel.self, from: (jsonData?.data!)!)
+            
+        }catch {
+            print("Error: \(error)")
+        }
+        return shops!
+    }
 }

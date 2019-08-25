@@ -12,15 +12,16 @@ class CategoryMenuVC: BaseVC {
 
     @IBOutlet weak var mTableView: UITableView!
     let categoryNIB: String = "CategoryCell"
+    let toMenuSegu = "toMenu"
     
-    var categoryList: [Category] = []
+    var categoryList: [NistansiMenu] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mTableView.separatorStyle = .none
         setXIB()
-        getCategories()
+        //getCategories()
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -49,7 +50,7 @@ class CategoryMenuVC: BaseVC {
         list.forEach { (item) in
             if let tran = item.trans {
                 if !tran.isEmpty {
-                    self.categoryList.append(item)
+                    //self.categoryList.append(item)
                 }
             }
         }
@@ -70,7 +71,7 @@ extension CategoryMenuVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CategoryCell = tableView.dequeueReusableCell(withIdentifier: categoryNIB, for: indexPath) as! CategoryCell
-        
+        cell.shadowAndBorderForTableViewCell(cell: cell)
         cell.selectionStyle = .none
         if let trans = categoryList[indexPath.row].trans {
             if !trans.isEmpty {
@@ -83,15 +84,63 @@ extension CategoryMenuVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 150
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        if let desVC = mainStoryboard.instantiateViewController(withIdentifier: "MainMenuVC") as? MainMenuVC {
-            desVC.category = categoryList[indexPath.row]
-            present(desVC, animated: true)
+        //performSegue(withIdentifier: toMenuSegu, sender: indexPath.row)
+        DefaultManager.saveEnteredMenuDefault(value: indexPath.row)
+        toMainMenuVC(row: indexPath.row)
+    }
+    
+    func toMainMenuVC(row: Int){
+        
+        guard let list = categoryList[row].sections else {
+            return
         }
+        let mList: [Section] = reloadData(mList: list)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let desVC = mainStoryboard.instantiateViewController(withIdentifier: "MainContainerVC") as? MainContainerVC {
+            desVC.menuList = mList
+            desVC.section = mList[0]
+            desVC.row = 0
+            //DefaultManager.saveSelectedRowDefault(value: indexPath.row)
+            self.present(desVC, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == toMenuSegu {
+            
+            let desVC = segue.destination as! MainMenuVC
+            let index = sender as? Int
+            DefaultManager.saveEnteredMenuDefault(value: index!)
+            print("index is \(index!)")
+            guard let list = categoryList[index ?? 0].sections else {
+                return
+            }
+            if let trans = categoryList[index ?? 0].trans {
+                if !trans.isEmpty {
+                    if let title = trans[0].title {
+                        desVC.menuTitle = title
+                    }
+                }
+            }
+            desVC.menuList = reloadData(mList: list)
+            desVC.searchMenuList = reloadData(mList: list)
+        }
+    }
+    
+    func reloadData(mList: [Section]) -> [Section]{
+        var list: [Section] = []
+        mList.forEach { (item) in
+            if let trans = item.trans {
+                if !trans.isEmpty {
+                    list.append(item)
+                }
+            }
+        }
+        return list
     }
     
 }

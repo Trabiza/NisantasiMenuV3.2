@@ -32,7 +32,11 @@ class CustomGradient: UIView {
     
     func updateView() {
         let Layer = self.layer as! CAGradientLayer
-        Layer.colors = [FirstColor.cgColor , SecondColor.cgColor]
+        //Layer.startPoint = CGPoint(x: 0.5, y: 1.0)
+        //Layer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        //Layer.locations = [0.5, 1.0]
+        Layer.locations = [0.0, 0.7, 1.0]
+        Layer.colors = [FirstColor.cgColor , UIColor.clear.cgColor ,SecondColor.cgColor]
     }
     
 }

@@ -221,6 +221,35 @@ class APIManager : NSObject {
         }
     }
     
+    class func updateAPI(view: UIView ,completion: @escaping (_ error: Error?, _ success: Bool, _ data: String?) -> Void) {
+        
+        let url = URLManager.updateURL
+        
+        Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: nil)
+            .validate(statusCode: 200..<500)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure(let error):
+                    completion(error, false, nil)
+                    print(error)
+                case .success( _):
+                    print("Update results are \(String(describing: response.result.value))")
+                    if let data = Parsing.parseUpdate(jsonData: response){
+                        guard let mDate = data.data else{
+                            completion(nil, true, nil)
+                            return
+                        }
+                        completion(nil, true, mDate)
+                    }else{
+                        completion(nil, false, nil)
+                        print("Items Failed")
+                    }
+                }
+        }
+    }
+    
     class func reviewsAPI(meal: String, food_quality: String, beverages_quality: String, hospitality: String,overall_experience: String, hear_about_us: String,visit_date: String, guest_name: String,guest_mobile: String, guest_address: String, guest_email: String, comment: String,view: UIView ,completion: @escaping (_ error: Error?, _ success: Bool)->Void) {
         
         let url = URLManager.reviewsURL
@@ -255,6 +284,39 @@ class APIManager : NSObject {
                         completion(nil, true)
                     }else{
                         completion(nil, false)
+                        print("Items Failed")
+                    }
+                }
+        }
+    }
+    
+    
+    class func nistansiAPI(lang: String, view: UIView ,completion: @escaping (_ error: Error?, _ success: Bool, _ data: NistansiModel?) -> Void) {
+        
+        let url = URLManager.allURL
+        
+        let parameters = ["lang": lang]
+        
+        Alamofire.request(url, method: .get, parameters: parameters,encoding: URLEncoding.default, headers: nil)
+            .validate(statusCode: 200..<500)
+            .responseJSON { response in
+                
+                switch response.result
+                {
+                case .failure(let error):
+                    completion(error, false, nil)
+                    print(error)
+                case .success( _):
+                    //print("Nistansi results are \(String(describing: response.result.value))")
+                    if Parsing.getResponse(jsonData: response){
+                        if let model = Parsing.parseNistansi(jsonData: response){
+                            completion(nil, true, model)
+                        }else{
+                            completion(nil, false, nil)
+                            print("Items Failed")
+                        }
+                    }else{
+                        completion(nil, false, nil)
                         print("Items Failed")
                     }
                 }

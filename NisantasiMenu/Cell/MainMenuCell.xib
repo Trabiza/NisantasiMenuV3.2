@@ -10,11 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Merriweather-Bold.ttf">
-            <string>Merriweather-Bold</string>
-        </array>
-        <array key="Merriweather-Regular.ttf">
-            <string>Merriweather-Regular</string>
+        <array key="TrajanPro-Bold.otf">
+            <string>TrajanPro-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -32,64 +29,52 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="9mG-XB-uHQ">
                                 <rect key="frame" x="0.0" y="0.0" width="223" height="200"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="CornerRaduis">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="che-xj-wCG" customClass="CustomGradient" customModule="NisantasiMenu" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="100" width="223" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y73-fG-Qsq">
+                                        <rect key="frame" x="10" y="172" width="209" height="18"/>
+                                        <fontDescription key="fontDescription" name="TrajanPro-Bold" family="Trajan Pro" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Y73-fG-Qsq" secondAttribute="trailing" constant="4" id="4dU-Pm-m4s"/>
+                                    <constraint firstItem="Y73-fG-Qsq" firstAttribute="leading" secondItem="che-xj-wCG" secondAttribute="leading" constant="10" id="CSX-lA-dIi"/>
+                                    <constraint firstAttribute="bottom" secondItem="Y73-fG-Qsq" secondAttribute="bottom" constant="10" id="fZp-M8-ahT"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="FirstColor">
                                         <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="SecondColor">
-                                        <color key="value" white="0.24791124131944445" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="CornerRaduis">
-                                        <real key="value" value="8"/>
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fHO-ta-H0f">
-                                <rect key="frame" x="10" y="118" width="4.5" height="72"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y73-fG-Qsq">
-                                        <rect key="frame" x="0.0" y="0.0" width="4.5" height="23"/>
-                                        <fontDescription key="fontDescription" name="Merriweather-Bold" family="Merriweather" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkN-at-yCE">
-                                        <rect key="frame" x="0.0" y="29" width="4.5" height="19"/>
-                                        <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nt-25-D8u">
-                                        <rect key="frame" x="0.0" y="54" width="4.5" height="18"/>
-                                        <fontDescription key="fontDescription" name="Merriweather-Regular" family="Merriweather" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="che-xj-wCG" firstAttribute="top" secondItem="7zM-Xs-JZu" secondAttribute="top" constant="100" id="4CM-Re-O0z"/>
+                            <constraint firstItem="che-xj-wCG" firstAttribute="top" secondItem="7zM-Xs-JZu" secondAttribute="top" id="4CM-Re-O0z"/>
                             <constraint firstAttribute="trailing" secondItem="che-xj-wCG" secondAttribute="trailing" id="6NL-y7-HXK"/>
                             <constraint firstItem="9mG-XB-uHQ" firstAttribute="top" secondItem="7zM-Xs-JZu" secondAttribute="top" id="Akw-DJ-eLf"/>
                             <constraint firstItem="9mG-XB-uHQ" firstAttribute="leading" secondItem="7zM-Xs-JZu" secondAttribute="leading" id="Fsc-FS-nHd"/>
                             <constraint firstAttribute="trailing" secondItem="9mG-XB-uHQ" secondAttribute="trailing" id="MlZ-FP-eW0"/>
-                            <constraint firstItem="fHO-ta-H0f" firstAttribute="leading" secondItem="7zM-Xs-JZu" secondAttribute="leading" constant="10" id="eXY-oe-b00"/>
                             <constraint firstAttribute="bottom" secondItem="che-xj-wCG" secondAttribute="bottom" id="j65-Zr-roU"/>
                             <constraint firstAttribute="bottom" secondItem="9mG-XB-uHQ" secondAttribute="bottom" id="jLN-rp-8YD"/>
                             <constraint firstItem="che-xj-wCG" firstAttribute="leading" secondItem="7zM-Xs-JZu" secondAttribute="leading" id="nK3-nZ-4n7"/>
-                            <constraint firstAttribute="bottom" secondItem="fHO-ta-H0f" secondAttribute="bottom" constant="10" id="yc1-Fb-6NW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -103,9 +88,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="223" height="200"/>
             <connections>
-                <outlet property="dateLabel" destination="6Nt-25-D8u" id="e83-0X-PIk"/>
+                <outlet property="gradientView" destination="che-xj-wCG" id="1Jv-Qd-K5E"/>
                 <outlet property="imageView" destination="9mG-XB-uHQ" id="1lb-oO-wzj"/>
-                <outlet property="itemsCountLabel" destination="BkN-at-yCE" id="yQO-X9-dRF"/>
                 <outlet property="titleLabel" destination="Y73-fG-Qsq" id="LHN-hD-PP6"/>
             </connections>
             <point key="canvasLocation" x="111.5" y="127"/>

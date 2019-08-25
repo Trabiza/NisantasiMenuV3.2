@@ -77,4 +77,54 @@ public class HelperManager {
             }
         }
     }
+    
+    public static func change(_ mViewController: UIViewController, mName: String){
+        mViewController.dismiss(animated: false, completion: nil)
+        if UserDataManager.getUserLanguage() == Config.English {
+            DefaultManager.saveLanguageDefault(value: Config.Arabic)
+            L102Language.setAppleLAnguageTo(lang: Config.Arabic)
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }else{
+            DefaultManager.saveLanguageDefault(value: Config.English)
+            L102Language.setAppleLAnguageTo(lang: Config.English)
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
+        
+        let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        rootviewcontroller.rootViewController = mViewController.storyboard?.instantiateViewController(withIdentifier: mName)
+        let mainwindow = (UIApplication.shared.delegate?.window!)!
+        mainwindow.backgroundColor = UIColor(hue: 0.6477, saturation: 0.6314, brightness: 0.6077, alpha: 0.8)
+        UIView.transition(with: mainwindow, duration: 0.4, animations: {}) { (finished) in
+        }
+    }
+    
+    public static func backToVC(_ mViewController: UIViewController, mName: String){
+        let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        rootviewcontroller.rootViewController = mViewController.storyboard?.instantiateViewController(withIdentifier: mName)
+        let mainwindow = (UIApplication.shared.delegate?.window!)!
+        mainwindow.backgroundColor = UIColor(hue: 0.6477, saturation: 0.6314, brightness: 0.6077, alpha: 0.8)
+        UIView.transition(with: mainwindow, duration: 0.4, animations: {}) { (finished) in
+        }
+    }
+    
+    public static func backToMain(_ mViewController: UIViewController){
+        let rootviewcontroller: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        rootviewcontroller.rootViewController = mViewController.storyboard?.instantiateViewController(withIdentifier: "MainVC")
+        let mainwindow = (UIApplication.shared.delegate?.window!)!
+        mainwindow.backgroundColor = UIColor(hue: 0.6477, saturation: 0.6314, brightness: 0.6077, alpha: 0.8)
+        UIView.transition(with: mainwindow, duration: 0.4, animations: {}) { (finished) in
+        }
+    }
+    
+    public static func changeLanguageCode(_ mViewController: UIViewController, mName: String){
+        if UserDataManager.getUserLanguage() == Config.English {
+            DefaultManager.saveLanguageDefault(value: Config.Arabic)
+            L102Language.setAppleLAnguageTo(lang: Config.Arabic)
+            //UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        }else{
+            DefaultManager.saveLanguageDefault(value: Config.English)
+            L102Language.setAppleLAnguageTo(lang: Config.English)
+            //UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
+    }
 }

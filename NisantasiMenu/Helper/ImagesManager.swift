@@ -15,7 +15,7 @@ public class ImagesManager {
         KingfisherManager.shared.cache.maxCachePeriodInSecond = .infinity
         
         let mUrl = "\(URLManager.imageURL)\(url)"
-        print("fokin url is \(mUrl)")
+        print("image url is \(mUrl)")
         guard let urlString = mUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return
         }
@@ -32,6 +32,20 @@ public class ImagesManager {
             if error != nil {
                 image.image = UIImage(named: Config.placeholderImage)
             }
+        }
+    }
+    
+    public static func cacheImage(cacheKey: String, image: UIImageView){
+        let mUrl = "\(URLManager.imageURL)\(cacheKey)"
+        KingfisherManager.shared.cache.maxCachePeriodInSecond = .infinity
+        
+        let cache = ImageCache.default
+        let cached = cache.imageCachedType(forKey: mUrl).cached
+        if cached {
+            print("image cached ya man")
+        }else{
+            setImage(url: cacheKey, image: image)
+            print("image cached not ya man")
         }
     }
     

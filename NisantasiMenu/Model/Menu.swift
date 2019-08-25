@@ -56,6 +56,8 @@ struct Section: Codable {
     let sectionsCount, itemsCount: Int?
     let trans: [SectionTran]?
     let images: [Image]?
+    let items: [Item]?
+    let sections: [Section]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -65,7 +67,7 @@ struct Section: Codable {
         case createdAt = "created_at"
         case sectionsCount = "sections_count"
         case itemsCount = "items_count"
-        case trans, images
+        case trans, images, items, sections
     }
 }
 

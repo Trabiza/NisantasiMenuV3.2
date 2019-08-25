@@ -37,6 +37,7 @@ struct RecommendedItem: Codable {
     let name, recommendedItemDescription: String?
     let ingredientWarnings: String?
     let imagesURL, videosURL: String?
+    let price: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -48,6 +49,7 @@ struct RecommendedItem: Codable {
         case markAsOffer = "mark_as_offer"
         case createdAt = "created_at"
         case name
+        case price
         case recommendedItemDescription = "description"
         case ingredientWarnings = "ingredient_warnings"
         case imagesURL = "images_url"

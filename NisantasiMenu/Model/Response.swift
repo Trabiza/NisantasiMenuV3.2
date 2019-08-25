@@ -16,3 +16,14 @@ struct Response : Codable{
         case response = "response"
     }
 }
+
+struct ResponseUpdate : Codable{
+    
+    let response: Bool?
+    let data: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case response = "response"
+        case data
+    }
+}

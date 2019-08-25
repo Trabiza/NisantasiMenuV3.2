@@ -12,9 +12,10 @@ class SubMenuCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var mStackView: UIStackView!
+    @IBOutlet weak var specialImage: UIImageView!
+    @IBOutlet weak var rankingImage: UIImageView!
     
     func setImage(url: String) {
         ImagesManager.setImage(url: url, image: imageView)

@@ -17,6 +17,8 @@ struct URLManager {
     public static let menusURL                      = main + "menus"
     public static let offersURL                     = main + "offers"
     public static let reviewsURL                    = main + "add/review"
+    public static let updateURL                     = main + "update"
+    public static let allURL                        = main + "all"
     
     public static func getMenus(id: String) -> String {
         return main + "menu/\(id)"
